@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class LogActivity extends Model
 {
     use HasFactory;
+    protected $table = 'log_activity';
+
     protected $fillable = [
-        'invoice_number', 'product_id', 'qty', 'subtotal', 'user_id', 'total'
+        'subject', 'url', 'method', 'ip', 'agent', 'user_id'
     ];
 }
