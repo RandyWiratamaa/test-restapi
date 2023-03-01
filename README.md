@@ -37,10 +37,10 @@ endpoint : ``host:port/api/order/{invoice_number}``
 image.png
 
 
-## Laravel Log
+## Log
 Method `GET`
 
-endpoint: ``host::port/api/log_activities/``
+endpoint: ``host:port/api/log_activities/``
 
 
 
