@@ -1,3 +1,10 @@
+# Migration Product Table
+
+## Seeder
+```php
+php artisan db:seed --class:ProductSeeder
+```
+
 # API EndPoints
 ## Register
 Method `POST`

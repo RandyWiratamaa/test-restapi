@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "62368865-1180-4aed-a89c-bc4ccc1ed876",
+		"name": "Nawatech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10420575"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|omODjwSp9GWQunkYvRr9omKlEayk7z1eyGgxGp4G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "invoice_number",
+							"value": "INV98765",
+							"type": "text"
+						},
+						{
+							"key": "product_id[0]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "qty[0]",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "subtotal[0]",
+							"value": "407110",
+							"type": "text"
+						},
+						{
+							"key": "product_id[1]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "qty[1]",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "subtotal[1]",
+							"value": "200000",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "total",
+							"value": "607110",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/order",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SHOW ORDER BY INVOICE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|omODjwSp9GWQunkYvRr9omKlEayk7z1eyGgxGp4G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/order/INV123",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"INV123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CANCEL ORDER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|omODjwSp9GWQunkYvRr9omKlEayk7z1eyGgxGp4G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/order/INV123",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"INV123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXPORT EXCEL / CSV",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|omODjwSp9GWQunkYvRr9omKlEayk7z1eyGgxGp4G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/export",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOG ACTIVITY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/log_activities",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"log_activities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
