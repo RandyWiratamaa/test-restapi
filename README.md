@@ -33,6 +33,10 @@ Method `GET`
 
 endpoint : ``host:port/api/order/{invoice_number}``
 
+## Export Excel 
+Method `GET`
+
+endpoint : ``host:port/api/export/{invoice_number}``
 
 ## Cancel / Delete Order
 Method `DELETE`
