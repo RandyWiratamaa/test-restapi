@@ -12,6 +12,11 @@ class OrderExport implements FromCollection, WithCustomCsvSettings, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
+    public function __construct($invoice_number)
+    {
+        $this->invoice_number = $invoice_number;
+    }
+
     public function getCsvSettings(): array
     {
         return [
@@ -26,6 +31,6 @@ class OrderExport implements FromCollection, WithCustomCsvSettings, WithHeadings
 
     public function collection()
     {
-        return Order::select('invoice_number', 'product_id', 'qty', 'subtotal', 'total')->get();
+        return Order::select('invoice_number', 'product_id', 'qty', 'subtotal', 'total')->where('invoice_number', $this->invoice_number)->get();
     }
 }

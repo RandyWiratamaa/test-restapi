@@ -53,7 +53,14 @@ class OrderController extends Controller
     }
 
     public function show($invoice_number) {
-        $data = Order::where('invoice_number', $invoice_number)->get();
+        $data = Order::where('invoice_number', $invoice_number)
+                        ->with(['product' => function($qry) {
+                            return $qry->select('id','name', 'price');
+                        }, 'user' => function($query){
+                            return $query->select('id', 'name', 'email');
+                        }])
+                        ->select('id', 'invoice_number', 'product_id', 'qty', 'subtotal', 'user_id', 'total')
+                        ->get();
 
         return response()->json([
             'message' => 'Success',
@@ -69,7 +76,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function export()
+    public function export($invoice_number)
     {
         // $data = Excel::download(new OrderExport, 'order.csv');
         // return response()->json([
@@ -77,8 +84,11 @@ class OrderController extends Controller
         //     'data' => $data
         // ]);
 
-        $data = Excel::store(new OrderExport, 'order.xlsx', storage_path('excel'));
-
-        return $data;
+        $store = Excel::store(new OrderExport($invoice_number), 'ORDER_'. $invoice_number .'.xlsx');
+        $data = array(
+            'message' => 'Data has been Exported',
+            'data' => storage_path('ORDER_'. $invoice_number .'.xlsx')
+        );
+        return response()->json($data);
     }
 }

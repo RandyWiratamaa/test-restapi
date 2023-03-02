@@ -11,4 +11,14 @@ class Order extends Model
     protected $fillable = [
         'invoice_number', 'product_id', 'qty', 'subtotal', 'user_id', 'total'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

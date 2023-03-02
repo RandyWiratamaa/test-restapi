@@ -21,7 +21,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logs', [AdminController::class, 'addToLog']);
 Route::get('log_activities', [AdminController::class, 'logActivity']);
-Route::get('export', [OrderController::class, 'export']);
+Route::get('export/{invoice_number}', [OrderController::class, 'export']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
     // return $request->user();
